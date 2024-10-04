@@ -10,7 +10,7 @@ function product(nums, i = 0) {
 function longest(words, longest_word_idx = 0, curr_idx = 1) {
   let longest_word = words[longest_word_idx];
   if (words[curr_idx]) {
-    if (longest_word.length < words[curr_idx].length) return longest(words, longest_word_idx = curr_idx, curr_idx + 1); 
+    if (longest_word.length < words[curr_idx].length) return longest(words, longest_word_idx = curr_idx, curr_idx + 1);
     else return longest(words, longest_word_idx, curr_idx + 1);
   }
   return longest_word.length;
@@ -18,8 +18,9 @@ function longest(words, longest_word_idx = 0, curr_idx = 1) {
 
 /** everyOther: return a string with every other letter. */
 
-function everyOther(str) {
-
+function everyOther(str, newStr = "", i = 0) {
+  if (i >= str.length) return newStr;
+  return everyOther(str, newStr + str[i], i + 2);
 }
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
