@@ -34,22 +34,27 @@ function isPalindrome(str, i = 0, state = true) {
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
 
 function findIndex(arr, val, i = 0) {
-  if(i === arr.length) return -1;
-  else if(arr[i] === val) return i;
+  if (i === arr.length) return -1;
+  else if (arr[i] === val) return i;
   return findIndex(arr, val, i + 1);
 }
 
 /** revString: return a copy of a string, but in reverse. */
 
 function revString(str, newStr = "", i = 0) {
-  if(i === str.length) return newStr;
+  if (i === str.length) return newStr;
   return revString(str, newStr + str[(str.length - 1) - i], i + 1);
 }
 
 /** gatherStrings: given an object, return an array of all of the string values. */
 
 function gatherStrings(obj) {
-
+  const arr = [];
+  for (property in obj) {
+    if (typeof obj[property] === "object") arr.push(...gatherStrings(obj[property]));
+    if (typeof obj[property] === "string") arr.push(obj[property]);
+  }
+  return arr;
 }
 
 /** binarySearch: given a sorted array of numbers, and a value,
